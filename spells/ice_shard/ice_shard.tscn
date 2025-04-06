@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://coanlqctphwe5"]
+
+[ext_resource type="Texture2D" uid="uid://cie2ddj4x3elj" path="res://assets/sprites/spells/ice_shard.png" id="1_03lyy"]
+[ext_resource type="Script" uid="uid://bb2brb5mu5b66" path="res://spells/ice_shard/ice_shard.gd" id="1_rq1vi"]
+[ext_resource type="PackedScene" uid="uid://c20pdddig8yse" path="res://components/hitbox.tscn" id="3_jfotv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq1vi"]
+atlas = ExtResource("1_03lyy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i3fa"]
+atlas = ExtResource("1_03lyy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpnno"]
+atlas = ExtResource("1_03lyy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iocpd"]
+atlas = ExtResource("1_03lyy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrmod"]
+atlas = ExtResource("1_03lyy")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g4rd"]
+atlas = ExtResource("1_03lyy")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wnae"]
+atlas = ExtResource("1_03lyy")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmhmu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq1vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i3fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpnno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iocpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrmod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g4rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wnae")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 10.0
+}]
+
+[node name="IceShard" type="Node2D"]
+script = ExtResource("1_rq1vi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wmhmu")
+animation = &"cast"
+frame = 5
+
+[node name="Hitbox" parent="." instance=ExtResource("3_jfotv")]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(5, -11, 18, -21, 32, -23, 28, 22, -2, 29, -29, 20, -34, -34, -2, -27)
