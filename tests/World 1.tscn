@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://doqo4dvhyj4xa"]
+
+[ext_resource type="PackedScene" uid="uid://cpxbd2jt1aibb" path="res://player/player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bddtviydqdggm" path="res://enemies/bat.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://d077gs88o5gc5" path="res://assets/sprites/npc/shopkeeper/shopkeeper.png" id="6_tq5ww"]
+[ext_resource type="Script" uid="uid://c73io38gxvxg0" path="res://tests/World 1.gd" id="7"]
+[ext_resource type="PackedScene" uid="uid://dn82meaeursk2" path="res://lantern/lantern.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://b0dqgpgi1vbgu" path="res://ui/hud.tscn" id="14_bxaom"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ResetButton" type="Button" parent="CanvasLayer"]
+offset_left = 9.0
+offset_top = 107.0
+offset_right = 60.0
+offset_bottom = 138.0
+scale = Vector2(1.08634, 1)
+theme_override_colors/font_disabled_color = Color(0.384314, 0.396078, 0.384314, 0.854902)
+theme_override_colors/font_color = Color(0.0705882, 0.92549, 0.101961, 1)
+theme_override_colors/font_pressed_color = Color(0.0980392, 0.615686, 0.054902, 1)
+text = "Reset"
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("14_bxaom")]
+
+[node name="Lantern" parent="." instance=ExtResource("8")]
+modulate = Color(1.2, 1.2, 1.2, 0.94902)
+position = Vector2(502, 316)
+collision_layer = 2
+
+[node name="Player" parent="." instance=ExtResource("1")]
+light_mask = -2147483647
+z_index = 6
+position = Vector2(467, 329)
+collision_priority = 100.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+position = Vector2(0, -10)
+remote_path = NodePath("../../Camera2D")
+
+[node name="Bats" type="Node" parent="."]
+
+[node name="Bat" parent="Bats" instance=ExtResource("6")]
+position = Vector2(159, 101)
+
+[node name="Bat2" parent="Bats" instance=ExtResource("6")]
+position = Vector2(327, 413)
+
+[node name="Bat3" parent="Bats" instance=ExtResource("6")]
+position = Vector2(664, 199)
+
+[node name="Bat4" parent="Bats" instance=ExtResource("6")]
+position = Vector2(710, 410)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 4096
+y_sort_enabled = true
+position = Vector2(467, 309)
+scale = Vector2(2, 2)
+limit_left = -200
+limit_top = -200
+limit_right = 2000
+limit_bottom = 2000
+limit_smoothed = true
+
+[node name="Shopkeeper" type="Sprite2D" parent="."]
+position = Vector2(399, 310)
+scale = Vector2(2, 2)
+texture = ExtResource("6_tq5ww")
+
+[connection signal="pressed" from="CanvasLayer/ResetButton" to="." method="_on_Button_pressed"]

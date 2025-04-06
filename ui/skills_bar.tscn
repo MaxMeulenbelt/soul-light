@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw5tuk58sivwj"]
+
+[ext_resource type="Texture2D" uid="uid://dqs7o5fn3gn7y" path="res://assets/sprites/ui/spells/ice_shard_icon.png" id="1_cpo22"]
+[ext_resource type="Texture2D" uid="uid://db5486mgmsmsm" path="res://assets/sprites/ui/spells/soul_skill_icon.png" id="2_rlarg"]
+
+[node name="Control" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot1" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 8
+texture = ExtResource("1_cpo22")
+
+[node name="Slot2" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 8
+texture = ExtResource("2_rlarg")
+
+[node name="Slot3" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 8
+texture = ExtResource("2_rlarg")
+
+[node name="Slot4" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 8
+texture = ExtResource("2_rlarg")
+
+[node name="Slot5" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 8
+texture = ExtResource("2_rlarg")
